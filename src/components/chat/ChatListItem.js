@@ -1,17 +1,11 @@
 import React from 'react';
-
-function htmlDecode(input) {
-    let doc = new DOMParser().parseFromString(input, "text/html");
-    console.log(doc.documentElement.lastChild.firstChild)
-    console.log(input)
-    return doc.documentElement.lastChild.firstChild.textContent;
-}
+import DOMPurify from 'dompurify';
 
 const ChatListItem = ( {chat} ) => {
     return (
         <div style={{ display: "flex", alignItems: "center" }}>
             <span>{ chat.username }: </span>
-            <span style={{ display: "flex", alignItems: "center" }} dangerouslySetInnerHTML={{ __html: chat.message }}></span>
+            <span style={{ display: "flex", alignItems: "center" }} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(chat.message) }}></span>
         </div>
     );
 }

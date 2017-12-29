@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ChatListItem from './ChatListItem';
 import { height } from 'window-size';
+import uuid from "uuid/v1";
 
 class ChatList extends Component {
     
@@ -11,7 +12,7 @@ class ChatList extends Component {
 
     chatListItems() {
         return this.props.chats.map( chat => {
-            return <ChatListItem key={chat.id} chat={chat}/>;
+            return <ChatListItem key={uuid()} chat={chat}/>;
         });
     }
 
