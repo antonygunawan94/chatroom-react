@@ -37,7 +37,7 @@ class Chat extends Component {
     }
 
     receiveMessage(data){
-        let chat = JSON.parse(data)
+        let chat = JSON.parse(data);
         this.setState({ chats: this.state.chats.concat(chat) })
     }
 
