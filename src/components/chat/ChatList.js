@@ -12,7 +12,23 @@ class ChatList extends Component {
 
     chatListItems() {
         return this.props.chats.map( chat => {
-            return <ChatListItem key={uuid()} chat={chat}/>;
+            if(chat.message == ""){
+                if(this.props.username == chat.username){
+                    return (
+                        <div key={ uuid()} style={{ display: "flex", alignItems: "center" }}>
+                            <span>Welcome <span style={{ fontWeight: 'bold' }}>{ chat.username }</span></span>
+                        </div>
+                    );
+                }else{
+                    return (
+                        <div key={ uuid()} style={{ display: "flex", alignItems: "center" }}>
+                            <span><span style={{ fontWeight: 'bold' }}>{ chat.username }</span> has join room</span>
+                        </div>
+                    );
+                }
+            }else{
+                return <ChatListItem key={uuid()} chat={chat}/>;
+            }
         });
     }
 

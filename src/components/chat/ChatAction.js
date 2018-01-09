@@ -16,23 +16,19 @@ class ChatAction extends Component {
 
     sendChat(chat){
         chat.id = uuid();
-        this.onChatSubmit(chat);
-        this.setState({ message: "" });
+        chat.username = this.props.username;
+        if(chat.message != ""){
+            this.onChatSubmit(chat);
+            this.setState({ message: "" });
+        }else{
+            alert("Please input your message");
+        }
     }
 
     render() {
         return (
             <div className="tile box is-parent">
                 <div className="tile is-parent is-vertical">
-                    <div className="tile is-child">
-                        <p className="control">
-                            <input className="input" 
-                                type="text" 
-                                placeholder="Username" 
-                                value={this.state.username} 
-                                onChange={ event => this.setState({username: event.target.value}) }/>
-                        </p>
-                    </div>
                     <div className="tile is-child">
                         <p className="control">
                             <textarea className="textarea" 
