@@ -42,7 +42,6 @@ class Chat extends Component {
     }
 
     sendMessage(chat){
-        console.log(chat);
         this.state.socket.send(JSON.stringify(chat))
     }
 
